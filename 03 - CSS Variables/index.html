@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scoped CSS Variables and JS</title>
+</head>
+<body>
+  <h2>Update CSS Variables with <span class='hl'>JS</span></h2>
+
+  <div class="controls">
+    <label for="spacing">Spacing:</label>
+    <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+
+    <label for="blur">Blur:</label>
+    <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+
+    <label for="base">Base Color</label>
+    <input id="base" type="color" name="base" value="#ffc600">
+  </div>
+
+  <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
+
+  <style>
+    /* (From MDN) The :root CSS pseudo-class matches the root element of a tree representing the document. 
+    In HTML, :root represents the <html> element and is identical to the selector html, 
+    except that its specificity is higher. 
+    
+    Having variables in the :root will ensure that all selectors will gain access to these variables.*/
+    :root {
+      /* To declare a CSS variable you will have to add 
+      a double dash before the name of that var. */
+      --base: #ffc600;
+      --spacing: 10px;
+      --blur: 10px;
+    }
+
+    img {
+      padding: var(--spacing); /* Now you can use previously declared variable using var keyword. */
+      background: var(--base);
+      filter: blur(var(--blur));
+    }
+
+    .hl {
+      color: var(--base);
+    }
+
+    /*
+      misc styles, nothing to do with CSS variables
+    */
+
+    body {
+      text-align: center;
+      background: #193549;
+      color: white;
+      font-family: 'helvetica neue', sans-serif;
+      font-weight: 100;
+      font-size: 50px;
+    }
+
+    .controls {
+      margin-bottom: 50px;
+    }
+
+    input {
+      width: 100px;
+    }
+  </style>
+
+  <script>
+    const inputs = document.querySelectorAll('.controls input'); // Get all elemenent with input tag inside div with controls class.
+
+    function handleUpdate() {
+      // The dataset property on the HTMLElement interface provides read/write access to all the custom data attributes (data-*) set on the element. 
+      const suffix = this.dataset.sizing || ''; // If there is not a data attribute (Base Color) then sizing = '';
+      // Add style attribute to the html tag and set property name and its value.
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+    }
+
+    inputs.forEach(input => input.addEventListener('change', handleUpdate)); // The change fires for <input>, <select>, and <textarea> elements when an alteration to the element's value is committed by the user.
+    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate)); // The mousemove event is fired when a pointing device (usually a mouse) is moved while over an element.
+  </script>
+
+
+</body>
+</html>
