@@ -1,0 +1,43 @@
+/* (From MDN) The :root CSS pseudo-class matches the root element of a tree representing the document. 
+In HTML, :root represents the <html> element and is identical to the selector html, 
+except that its specificity is higher. 
+
+Having variables in the :root will ensure that all selectors will gain access to these variables.*/
+:root {
+    /* To declare a CSS variable you will have to add 
+    a double dash before the name of that var. */
+    --base: #ffc600;
+    --spacing: 10px;
+    --blur: 10px;
+}
+
+img {
+    padding: var(--spacing); /* Now you can use previously declared variable using var keyword. */
+    background: var(--base);
+    filter: blur(var(--blur));
+}
+
+.hl {
+    color: var(--base);
+}
+
+/*
+misc styles, nothing to do with CSS variables
+*/
+
+body {
+    text-align: center;
+    background: #193549;
+    color: white;
+    font-family: 'helvetica neue', sans-serif;
+    font-weight: 100;
+    font-size: 50px;
+}
+
+.controls {
+    margin-bottom: 50px;
+}
+
+input {
+    width: 100px;
+}
