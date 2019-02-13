@@ -1,3 +1,8 @@
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable react/display-name */
+// eslint-disable-next-line react/display-name
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable react/display-name */
 // ## Array Cardio Day 2
 
 const people = [
