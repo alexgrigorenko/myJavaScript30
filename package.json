@@ -1,0 +1,23 @@
+{
+  "name": "myJavaScript30",
+  "version": "1.0.0",
+  "description": "This is my solutions to the JavaScript30 on https://wesbos.com/ with comments that describe JS code",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexgrigorenko/myJavaScript30.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexgrigorenko/myJavaScript30/issues"
+  },
+  "homepage": "https://github.com/alexgrigorenko/myJavaScript30#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.13.0"
+  }
+}
